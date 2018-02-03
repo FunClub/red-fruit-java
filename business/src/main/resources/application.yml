@@ -1,0 +1,50 @@
+
+  #jdbc配置
+spring:
+  datasource:
+    username: root
+    password: root
+    type: com.mchange.v2.c3p0.ComboPooledDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/red-fruit?serverTimezone=UTC&useSSL=true
+  profiles:
+    active: oss,api
+
+#mybatis.xml配置
+mybatis-plus:
+  mapper-locations: mapper/*Mapper.xml # mapper映射文件路径
+  configuration:
+    map-underscore-to-camel-case: true # 开启java属性驼峰命名到数据库字段下划线命名间的自动映射
+
+#第三方api配置
+api:
+  wechat:
+    #微信文章配置
+    article:
+      app-code: b9e4199f8d154c1eab0e313c79554a7d
+      host: http://jisuwxwzjx.market.alicloudapi.com
+      method: GET
+      path: /weixinarticle/get
+
+  #短信配置
+  sms:
+    app-code: b9e4199f8d154c1eab0e313c79554a7d
+    host: https://fesms.market.alicloudapi.com
+    method: GET
+    path: /sms/
+
+  #区域配置
+  area:
+    app-code: b9e4199f8d154c1eab0e313c79554a7d
+    host: https://api02.aliyun.venuscn.com
+    method: GET
+    path-of-get-parent: /area/all
+    path-of-get-sub: /area/query
+
+  #阿里对象存储服务
+  oss:
+    endpoint: http://www.taomei1314.com
+    bucket-name: red-fruit
+    access-key-i-d: LTAIBTIrJfnXL4q8
+    access-key-secret: dl4DvrEBtWEdxy3XVtV3s9nCd9D8Zf
+
