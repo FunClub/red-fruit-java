@@ -8,11 +8,11 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>core</artifactId>
+	<artifactId>business</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>core</name>
+	<name>business</name>
 	<description>红果社交核心应用</description>
 
 
@@ -28,11 +28,6 @@
 		<dependency>
 			<groupId>com.taomei</groupId>
 			<artifactId>api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.taomei</groupId>
-			<artifactId>oss</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<!--模块依赖end-->

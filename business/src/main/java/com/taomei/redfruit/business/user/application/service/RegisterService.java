@@ -14,4 +14,11 @@ public interface RegisterService {
      */
     boolean register(RegisterInfo registerInfo);
 
+    /**
+     * 验证用户手机号
+     * 正确性、是否被注册等验证
+     * @param mobile 手机号
+     * @return true则手机可用
+     */
+    public boolean verifyMobile(String mobile);
 }
