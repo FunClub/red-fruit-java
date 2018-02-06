@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/red-fruit?serverTimezone=UTC&useSSL=true
   profiles:
-    active: oss,api
+    active: oss,api,log
 
 #mybatis.xml配置
 mybatis-plus:
@@ -47,4 +47,6 @@ api:
     bucket-name: red-fruit
     access-key-i-d: LTAIBTIrJfnXL4q8
     access-key-secret: dl4DvrEBtWEdxy3XVtV3s9nCd9D8Zf
+logging:
+  level: debug
 

@@ -179,12 +179,13 @@ public class ValidatesUtil {
     }
 
     /**
-     * 创建六位随机数字
+     * 创建随机数字
+     * @param count 位数
      * @return 随机数字
      */
-    public static String generateRandomNumber(){
+    public static String generateRandomNumber(Integer count){
         StringBuilder sb = new StringBuilder();
-        for (int index=0;index<6;index++){
+        for (int index=0;index<count;index++){
             sb.append(new Random().nextInt(baseNum.length()));
         }
         return sb.toString();

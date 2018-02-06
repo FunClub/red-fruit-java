@@ -9,10 +9,18 @@ import com.taomei.redfruit.business.user.domain.model.User;
  */
 public interface UserRepository extends IService<User>{
 
+    void createUser(User user);
     /**
-     * 通过手机号查询用户
+     * 通过手机号查询用户Id
      * @param mobile 手机号
-     * @return 用户
+     * @return 用户id
      */
-    User selectByMobile(String mobile);
+    Long selectIdByMobile(String mobile);
+
+    /**
+     * 通过昵称查询用户Id
+     * @param nickname 昵称
+     * @return 用户id
+     */
+    Long selectIdByNickname(String nickname);
 }

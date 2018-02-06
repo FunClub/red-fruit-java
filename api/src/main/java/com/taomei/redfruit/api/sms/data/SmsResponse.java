@@ -33,4 +33,9 @@ public class SmsResponse {
      */
     @JsonProperty("Message")
     private String message;
+
+    public String getCode() {
+        return code;
+    }
+
 }

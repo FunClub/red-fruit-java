@@ -19,6 +19,16 @@ public class BaseInfo {
   private String nickname;
 
   /**
+   * 头像
+   */
+  private String profile;
+
+  /**
+   * 墙纸
+   */
+  private String banner;
+
+  /**
    * 性别
    */
   private Gender gender;
