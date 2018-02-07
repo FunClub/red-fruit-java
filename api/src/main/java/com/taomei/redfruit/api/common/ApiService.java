@@ -38,8 +38,7 @@ public class ApiService {
      */
     private String method;
 
-    public ApiService() {
-    }
+
 
     public ApiService(String host,String path, String appCode,String method) {
         this.headers = new HashMap<>();

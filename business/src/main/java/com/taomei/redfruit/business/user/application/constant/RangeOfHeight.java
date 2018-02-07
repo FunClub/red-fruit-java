@@ -1,4 +1,4 @@
-package com.taomei.redfruit.business.user.domain.model.constant;
+package com.taomei.redfruit.business.user.application.constant;
 
 /**
  * 身高范围枚举

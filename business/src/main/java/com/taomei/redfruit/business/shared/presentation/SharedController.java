@@ -16,28 +16,14 @@ import javax.servlet.http.HttpSession;
  * 共享控制器
  */
 @RestController
-@RequestMapping("/business/shared")
+@RequestMapping("/shared/")
 public class SharedController {
     /**
      * 区域服务
      */
     @Autowired
     private AreaService areaService;
-    /**
-     * 获取验证码
-     * @param request {@link javax.servlet.http.HttpServletRequest;}
-     * @param response {@link javax.servlet.http.HttpServletResponse;}
-     */
-    @GetMapping("/verificationCodeImg")
-    public void getVerificationCode(HttpServletRequest request, HttpServletResponse response){
-        ValidatesUtil.createVerificationCodeImg(request,response);
-    }
 
-    @GetMapping("/verifyImgVerificationCode/{verificationCode}")
-    public Object verify(@PathVariable("verificationCode") String verificationCode, HttpSession session){
-        String truthCode = session.getAttribute("verificationCode").toString();
-        return truthCode.equals(verificationCode.toUpperCase());
-    }
 
 
 
@@ -49,7 +35,7 @@ public class SharedController {
      * @return 区域集合
      * @throws Exception
      */
-    @GetMapping("/parent/{leave}/{pageNumber}/{pageSize}")
+    @GetMapping("parent/{leave}/{pageNumber}/{pageSize}")
     public Object getParentArea(@PathVariable("leave") String leave, @PathVariable("pageNumber") String pageNumber, @PathVariable("pageSize") String pageSize) throws Exception {
         return areaService.getParentArea(leave,pageNumber,pageSize);
     }
@@ -60,7 +46,7 @@ public class SharedController {
      * @return 区域集合
      * @throws Exception
      */
-    @GetMapping("/sub/{parentId}")
+    @GetMapping("sub/{parentId}")
     public Object getSubArea(@PathVariable("parentId") String parentId) throws Exception {
         return areaService.getSubArea(parentId);
     }

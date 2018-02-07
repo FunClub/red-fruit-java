@@ -40,13 +40,17 @@ api:
     method: GET
     path-of-get-parent: /area/all
     path-of-get-sub: /area/query
-
   #阿里对象存储服务
   oss:
     endpoint: http://www.taomei1314.com
     bucket-name: red-fruit
     access-key-i-d: LTAIBTIrJfnXL4q8
     access-key-secret: dl4DvrEBtWEdxy3XVtV3s9nCd9D8Zf
+  start:
+    app-code: b9e4199f8d154c1eab0e313c79554a7d
+    host: http://ali-star-lucky.showapi.com
+    method: GET
+    path: /star
 logging:
   level: debug
 

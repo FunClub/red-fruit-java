@@ -1,16 +1,10 @@
-package com.taomei.redfruit.business.user.infrastructure.domain;
+package com.taomei.redfruit.business.user.infrastructure.repository;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.taomei.redfruit.business.user.domain.model.User;
-import com.taomei.redfruit.business.user.domain.repository.UserRepository;
+import com.taomei.redfruit.business.user.infrastructure.po.User;
+import com.taomei.redfruit.business.user.application.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * 基础用户仓储
@@ -44,7 +38,6 @@ public class BaseUserRepository extends ServiceImpl<UserMapper,User> implements 
      */
     @Override
     public Long selectIdByNickname(String nickname) {
-
         return userMapper.selectIdByNickname(nickname);
     }
 }

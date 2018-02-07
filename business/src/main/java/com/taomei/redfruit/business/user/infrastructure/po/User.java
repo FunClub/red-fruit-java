@@ -1,4 +1,4 @@
-package com.taomei.redfruit.business.user.domain.model;
+package com.taomei.redfruit.business.user.infrastructure.po;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 import java.time.LocalDate;
 
 /**
- * 用户聚合
+ * 用户
  */
 @Data
 public class User {

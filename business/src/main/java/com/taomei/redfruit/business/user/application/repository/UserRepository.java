@@ -1,8 +1,7 @@
-package com.taomei.redfruit.business.user.domain.repository;
+package com.taomei.redfruit.business.user.application.repository;
 
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.service.IService;
-import com.taomei.redfruit.business.user.domain.model.User;
+import com.taomei.redfruit.business.user.infrastructure.po.User;
 
 /**
  * 用户仓储接口
@@ -10,6 +9,7 @@ import com.taomei.redfruit.business.user.domain.model.User;
 public interface UserRepository extends IService<User>{
 
     void createUser(User user);
+
     /**
      * 通过手机号查询用户Id
      * @param mobile 手机号

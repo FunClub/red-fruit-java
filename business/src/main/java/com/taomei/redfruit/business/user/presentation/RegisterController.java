@@ -1,42 +1,31 @@
 package com.taomei.redfruit.business.user.presentation;
 
-import com.taomei.redfruit.business.user.application.service.RegisterAppService;
-import com.taomei.redfruit.business.user.application.dto.RegisterInfo;
-import com.taomei.redfruit.business.user.domain.model.User;
+import com.taomei.redfruit.business.user.application.RegisterService;
+import com.taomei.redfruit.business.user.infrastructure.po.User;
 import com.taomei.redfruit.common.utils.ValidatesUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
  * 注册控制器
  */
 @RestController
-@RequestMapping("business/user/register")
+@RequestMapping("/user/register/")
 public class RegisterController {
 
     /**
-     * 基本注册服务
+     * 注册服务
      */
     @Autowired
-    @Qualifier("baseRegisterAppService")
-    private RegisterAppService registerAppService;
+    private RegisterService service;
 
-
-    @PostMapping("/")
+    @PostMapping("")
     public Object register(@RequestBody User user){
-        registerAppService.register(user);
-        return true;
-    }
-    /**
-     * 手机号验证
-     * @return 验证结果
-     */
-    @GetMapping("verifyMobile/{mobile}")
-    public Object verifyMobile(@PathVariable("mobile") String mobile){
-        return registerAppService.verifyMobile(mobile);
+        return service.register(user);
     }
 
     /**
@@ -48,7 +37,7 @@ public class RegisterController {
     @GetMapping("mobileVerificationCode/{mobile}")
     public Object sendMobileVerificationCode(@PathVariable("mobile") String mobile, HttpSession session) throws Exception {
         String verificationCode = ValidatesUtil.generateRandomNumber(6);
-        Boolean result=registerAppService.sendMobileVerificationCode(mobile,verificationCode);
+        Boolean result=service.sendMobileVerificationCode(mobile,verificationCode);
         session.setAttribute("mobileVerificationCode",verificationCode);
         return result;
     }
@@ -69,14 +58,29 @@ public class RegisterController {
         return false;
     }
 
+
     /**
-     * 验证昵称
-     * @param nickname 昵称
+     * 根据用户里的数据验证用户是否存在
+     * @param user 用户
      * @return 验证结果
-     * @throws Exception
      */
-    @GetMapping("verifyNickname/{nickname}")
-    public Object verifyNickname(@PathVariable("nickname") String nickname) throws Exception {
-        return registerAppService.verifyNickname(nickname);
+    @GetMapping("isUserExits")
+    public Object isUserExits(User user){
+        return service.isUserExits(user);
+    }
+    /**
+     * 获取验证码
+     * @param request {@link javax.servlet.http.HttpServletRequest;}
+     * @param response {@link javax.servlet.http.HttpServletResponse;}
+     */
+    @GetMapping("/verificationCodeImg")
+    public void getVerificationCode(HttpServletRequest request, HttpServletResponse response){
+        ValidatesUtil.createVerificationCodeImg(request,response);
+    }
+
+    @GetMapping("/verifyImgVerificationCode/{verificationCode}")
+    public Object verify(@PathVariable("verificationCode") String verificationCode, HttpSession session){
+        String truthCode = session.getAttribute("verificationCode").toString();
+        return truthCode.equals(verificationCode.toUpperCase());
     }
 }

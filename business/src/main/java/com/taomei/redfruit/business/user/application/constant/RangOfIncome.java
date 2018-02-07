@@ -1,4 +1,4 @@
-package com.taomei.redfruit.business.user.domain.model.constant;
+package com.taomei.redfruit.business.user.application.constant;
 
 /**
  * 用户月收入枚举

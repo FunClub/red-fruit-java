@@ -1,6 +1,5 @@
 package com.taomei.redfruit.business.shared.application;
 
-import com.taomei.redfruit.business.user.domain.model.User;
 import org.springframework.stereotype.Service;
 
 /**
