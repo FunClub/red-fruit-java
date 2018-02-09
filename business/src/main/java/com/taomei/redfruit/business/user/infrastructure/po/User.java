@@ -1,15 +1,17 @@
 package com.taomei.redfruit.business.user.infrastructure.po;
 
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  * 用户
  */
 @Data
-public class User {
+public class User extends Model<User>{
 
     private Long id;
 
@@ -87,7 +89,7 @@ public class User {
     /**
      * 月收入
      */
-    private String rangOfIncome;
+    private String income;
 
     /**
      * 是否有房
@@ -160,5 +162,13 @@ public class User {
      */
     public void increaseCharisma(Integer charisma){
         this.charisma += charisma;
+    }
+
+    /**
+     * 主键值
+     */
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
     }
 }
