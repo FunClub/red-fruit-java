@@ -1,11 +1,14 @@
 package com.taomei.redfruit.common.utils;
 
+import sun.misc.BASE64Encoder;
+
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.security.MessageDigest;
 import java.util.Random;
 
 /**
@@ -189,5 +192,25 @@ public class ValidatesUtil {
             sb.append(new Random().nextInt(baseNum.length()));
         }
         return sb.toString();
+    }
+
+    /**
+     * 将明文密码转换为加密密码
+     * @param pass 明文密码
+     * @return 加密后的密码
+     */
+    public static String generateEncryptPass(String pass){
+        MessageDigest md5= null;
+        String newPass=null;
+        try {
+            //确定计算方法
+            md5 = MessageDigest.getInstance("MD5");
+            //加密后的字符串
+            BASE64Encoder base64en = new BASE64Encoder();
+            newPass =base64en.encode(md5.digest(pass.getBytes("utf-8")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return newPass;
     }
 }

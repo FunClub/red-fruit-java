@@ -1,9 +1,9 @@
 package com.taomei.redfruit;
 
 import com.taomei.redfruit.api.start.StartService;
-import com.taomei.redfruit.business.user.application.RegisterService;
-import com.taomei.redfruit.business.user.application.repository.UserRepository;
-import com.taomei.redfruit.business.user.infrastructure.po.User;
+import com.taomei.redfruit.business.info.application.RegisterService;
+import com.taomei.redfruit.business.info.application.repository.UserRepository;
+import com.taomei.redfruit.business.info.infrastructure.po.User;
 import com.taomei.redfruit.common.utils.ValidatesUtil;
 import org.junit.Assert;
 import org.junit.Test;
