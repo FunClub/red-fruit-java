@@ -16,8 +16,11 @@ import java.util.UUID;
  * 文件服务，主要提供将文件上传到oss，以及从oss中删除文件
  */
 @Service
-public class FileService {
-
+public class OssService {
+    public static final String BANNER = "banner";
+    public static final String PROFILE = "profile";
+    public static final String ALBUM = "album";
+    public static final String MOOD = "mood";
     /**
      * OSS客户端
      */
@@ -28,8 +31,9 @@ public class FileService {
      */
     private OssConfiguration configuration;
 
+
     @Autowired
-    public FileService(OssConfiguration configuration) {
+    public OssService(OssConfiguration configuration) {
         this.configuration = configuration;
         client =new OSSClient(
                 configuration.getEndpoint(),

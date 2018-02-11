@@ -1,29 +1,13 @@
-package com.taomei.redfruit.business.info.infrastructure.po;
+package com.taomei.redfruit.business.info.application.dto;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-
 /**
- * 用户
+ * 用户信息
  */
 @Data
-public class User extends Model<User>{
-
+public class UserInfo {
     private Long id;
-
-    /**
-     * 手机号
-     */
-    private String mobile;
-
-    /**
-     * 密码
-     */
-    private String password;
 
     /**
      * 魅力值
@@ -40,34 +24,32 @@ public class User extends Model<User>{
      * 个人简介
      */
     private String introduction;
-    /**
-     * 头像
-     */
-    private String profile;
 
-    /**
-     * 原始头像
-     */
-    private String originalProfile;
 
-    /**
-     * 墙纸
-     */
-    private String banner;
-
-    /**
-     * 原始墙纸
-     */
-    private String originalBanner;
     /**
      * 性别
      */
     private String gender;
 
     /**
-     * 生日    @JsonFormat(pattern = "yyyy-MM-dd",shape = JsonFormat.Shape.STRING)
+     * 年龄
+     */
+    private Integer age;
+
+    /**
+     * 生日
      */
     private String birthday;
+
+    /**
+     * 生肖
+     */
+    private String chineseZodiac;
+
+    /**
+     * 生肖
+     */
+    private String start;
 
     /**
      * 身高
@@ -175,13 +157,5 @@ public class User extends Model<User>{
      */
     public void increaseCharisma(Integer charisma){
         this.charisma += charisma;
-    }
-
-    /**
-     * 主键值
-     */
-    @Override
-    protected Serializable pkVal() {
-        return this.id;
     }
 }

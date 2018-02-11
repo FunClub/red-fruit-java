@@ -42,7 +42,7 @@ api:
     path-of-get-sub: /area/query
   #阿里对象存储服务
   oss:
-    endpoint: http://www.taomei1314.com
+    endpoint: http://oss-cn-shenzhen.aliyuncs.com
     bucket-name: red-fruit
     access-key-i-d: LTAIBTIrJfnXL4q8
     access-key-secret: dl4DvrEBtWEdxy3XVtV3s9nCd9D8Zf

@@ -24,6 +24,11 @@ public class CenterInfo {
     private String banner;
 
     /**
+     * 用户原始墙纸
+     */
+    private String originalBanner;
+
+    /**
      * 点赞数
      */
     private Integer thumbsCount;
@@ -33,12 +38,18 @@ public class CenterInfo {
      */
     private String profile;
 
+
+    /**
+     * 用户原始头像
+     */
+    private String originalProfile;
+
     /**
      * 另一半头像
      */
     private String halfProfile;
 
-    /**
+     /**
      * 昵称
      */
     private String nickname;

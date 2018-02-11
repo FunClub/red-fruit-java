@@ -23,6 +23,7 @@ public class BaseUserRepository extends ServiceImpl<UserMapper,User> implements 
      */
     @Override
     public User selectByHalfUser(Long userId, Half half) {
+
         Long halfUserId = half.getHalfUserId();
         User user = null;
         if(halfUserId.equals(userId)){
@@ -30,6 +31,19 @@ public class BaseUserRepository extends ServiceImpl<UserMapper,User> implements 
         }else{
             user = selectById(halfUserId);
         }
+        return user;
+    }
+
+    /**
+     * 通过id查询用户，不包括密码
+     *
+     * @param userId 用户Id
+     * @return 用户
+     */
+    @Override
+    public User selectByIdExcludePass(Long userId) {
+        User user = selectById(userId);
+        user.setPassword(null);
         return user;
     }
 }

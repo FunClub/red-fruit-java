@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/file")
-public class FileController {
+public class OssController {
     @Autowired
-    private FileService fileService;
+    private OssService fileService;
 
     @GetMapping("/upload")
     public Object t1() throws Exception{

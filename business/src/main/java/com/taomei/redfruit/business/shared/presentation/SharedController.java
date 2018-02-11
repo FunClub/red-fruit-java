@@ -1,6 +1,8 @@
 package com.taomei.redfruit.business.shared.presentation;
 
 import com.taomei.redfruit.api.area.AreaService;
+import com.taomei.redfruit.business.shared.application.SharedService;
+import com.taomei.redfruit.business.shared.infrastructure.annotation.SetUserId;
 import com.taomei.redfruit.common.utils.ValidatesUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,20 @@ public class SharedController {
      */
     @Autowired
     private AreaService areaService;
+
+    @Autowired
+    private SharedService sharedService;
+
+    /**
+     * 获取用户主页标题信息
+     * @param userId 用户Id
+     * @return 标题信息
+     */
+    @GetMapping("titleUser")
+    @SetUserId
+    public Object getTitleUserInfo(Long userId){
+        return  sharedService.selectTitleUserInfo(userId);
+    }
 
 
     /**

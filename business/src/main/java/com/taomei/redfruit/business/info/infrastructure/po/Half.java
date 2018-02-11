@@ -29,6 +29,10 @@ public class Half{
     private String banner;
 
     /**
+     * 原始墙纸
+     */
+    private String originalBanner;
+    /**
      * 点赞数
      */
     private Integer thumbsCount;

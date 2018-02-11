@@ -26,9 +26,10 @@ public class BaseRegisterService implements RegisterService {
     @Override
     public Boolean register(User user) {
         user.setPassword(ValidatesUtil.generateEncryptPass(user.getPassword()));
-        user.setBanner("");
-        user.setProfile("assets/img/profile.png");
-        user.setOriginalProfile("assets/img/profile.png");
+        user.setBanner("static/half-banner.png");
+        user.setOriginalBanner("static/half-banner.png");
+        user.setProfile("static/profile.png");
+        user.setOriginalProfile("static/profile.png");
         return repository.insert(user);
     }
 

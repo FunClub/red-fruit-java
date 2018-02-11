@@ -16,4 +16,11 @@ public interface UserRepository extends IService<User>{
      * @return 用户
      */
     User selectByHalfUser(Long userId, Half half);
+
+    /**
+     * 通过id查询用户，不包括密码
+     * @param userId 用户Id
+     * @return 用户
+     */
+    User selectByIdExcludePass(Long userId);
 }

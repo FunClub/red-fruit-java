@@ -74,7 +74,12 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!--数据库依赖end-->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <!--数据库依赖end-->
 
 
 

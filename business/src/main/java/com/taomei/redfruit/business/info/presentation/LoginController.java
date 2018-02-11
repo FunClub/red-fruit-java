@@ -41,6 +41,6 @@ public class LoginController {
      */
     @GetMapping("status")
     public Object getLoginStatus(HttpSession session){
-        return session.getAttribute("user");
+        return session.getAttribute("user")!=null;
     }
 }
