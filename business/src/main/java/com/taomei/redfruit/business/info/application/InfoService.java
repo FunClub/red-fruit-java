@@ -10,6 +10,12 @@ import com.taomei.redfruit.business.info.infrastructure.po.User;
 public interface InfoService {
 
     /**
+     * 验证昵称是否可被更新
+     * @param user
+     * @return
+     */
+    Boolean nicknameCanUpdate(User user);
+    /**
      * 更新用户信息
      * @param user 用户
      * @return 成功与否

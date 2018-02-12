@@ -25,6 +25,21 @@ public class BaseInfoService implements InfoService{
     private HalfRepository halfRepository;
 
     /**
+     * 验证昵称是否可被更新
+     *
+     * @param user
+     * @return
+     */
+    @Override
+    public Boolean nicknameCanUpdate(User user) {
+        User user1 = new User();
+        user1.setNickname(user.getNickname());
+        EntityWrapper<User> wrapper = new EntityWrapper<>(user1);
+        wrapper.ne("id",user.getId());
+        return userRepository.selectOne(wrapper)==null;
+    }
+
+    /**
      * 更新用户信息
      *
      * @param user 用户

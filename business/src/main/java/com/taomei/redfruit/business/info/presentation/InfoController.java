@@ -16,6 +16,18 @@ public class InfoController {
     private InfoService infoService;
 
     /**
+     * 验证昵称是否可被更新
+     *
+     * @param user 用户
+     * @return
+     */
+    @GetMapping("/nickname")
+    @SetUserId
+    public Object nicknameCanUpdate(Long userId,User user){
+        user.setId(userId);
+        return infoService.nicknameCanUpdate(user);
+    }
+    /**
      * 更新用户信息
      *
      * @param user 用户

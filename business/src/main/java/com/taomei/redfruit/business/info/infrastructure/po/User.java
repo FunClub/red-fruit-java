@@ -107,7 +107,7 @@ public class User extends Model<User>{
     /**
      * 是否有房
      */
-    private Boolean houseAvailable;
+    private String houseAvailable;
 
     /**
      * 是否吃辣
@@ -128,6 +128,22 @@ public class User extends Model<User>{
      * 会做家务吗
      */
     private String housework;
+    /**
+     * 喜欢购物吗
+     */
+    private String shopping;
+    /**
+     * 喜欢电影吗
+     */
+    private String movie;
+    /**
+     * 喜欢动物吗
+     */
+    private String animal;
+    /**
+     * 喜欢游戏吗
+     */
+    private String game;
 
     /**
      * 年龄范围
@@ -167,7 +183,7 @@ public class User extends Model<User>{
     /**
      * 是否有房
      */
-    private Boolean criterionHouseAvailable;
+    private String criterionHouseAvailable;
 
     /**
      * 增加用户魅力值
