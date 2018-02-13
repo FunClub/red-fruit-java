@@ -20,7 +20,7 @@ public class BaseSharedService implements SharedService{
      * @return 标题信息
      */
     @Override
-    public TitleUserInfo selectTitleUserInfo(Long userId) {
+    public TitleUserInfo selectTitleUserInfo(String userId) {
         User user=userRepository.selectById(userId);
         TitleUserInfo info = new TitleUserInfo();
         BeanUtils.copyProperties(user,info);

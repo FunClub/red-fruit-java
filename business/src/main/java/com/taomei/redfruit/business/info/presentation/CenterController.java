@@ -27,7 +27,7 @@ public class CenterController {
     @PostMapping("profile")
     @SetUserId
     public Object uploadProfile(
-            Long userId,
+            String userId,
             @RequestParam("newImg") MultipartFile newImg,
             String originalImg,
             @RequestParam("type") String type) throws IOException {
@@ -54,7 +54,7 @@ public class CenterController {
      */
     @RequestMapping("{centerUserId}")
     @SetUserId
-    public Object getCenterInfo(Long userId,@PathVariable("centerUserId") Long centerUserId){
+    public Object getCenterInfo(String userId,@PathVariable("centerUserId") String centerUserId){
         CenterInfo centerInfo = infoService.selectCenterInfo(userId);
         centerInfo.setMine(userId.equals(centerUserId));
         return centerInfo;

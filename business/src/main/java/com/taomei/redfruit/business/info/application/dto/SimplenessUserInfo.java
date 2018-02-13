@@ -7,7 +7,7 @@ import lombok.Data;
  */
 @Data
 public class SimplenessUserInfo {
-    private Long id;
+    private String id;
     private String nickname;
     private String profile;
     private Integer age;

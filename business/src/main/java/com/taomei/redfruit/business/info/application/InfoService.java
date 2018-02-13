@@ -26,12 +26,12 @@ public interface InfoService {
      * @param userId 用户id
      * @return 用户的全部信息
      */
-    AllUserInfo selectAllUserInfo(Long userId);
+    AllUserInfo selectAllUserInfo(String userId);
 
     /**
      * 查询个人空间信息
      * @param userId 待查询的用户id
      * @return 个人空间信息
      */
-    CenterInfo selectCenterInfo(Long userId);
+    CenterInfo selectCenterInfo(String userId);
 }

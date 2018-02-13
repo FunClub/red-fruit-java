@@ -19,7 +19,7 @@ public class BaseHalfRepository extends ServiceImpl<HalfMapper,Half> implements 
      * @return 另一半信息
      */
     @Override
-    public Half selectByUserId(Long userId) {
+    public Half selectByUserId(String userId) {
         Half half1 = new Half();
         half1.setUserId(userId);
         Half half= selectOne(new EntityWrapper<Half>(half1));

@@ -36,8 +36,9 @@ public class SharedController {
      */
     @GetMapping("titleUser")
     @SetUserId
-    public Object getTitleUserInfo(Long userId){
-        return  sharedService.selectTitleUserInfo(userId);
+    public Object getTitleUserInfo(String userId){
+        Object o = sharedService.selectTitleUserInfo(userId);
+        return  o;
     }
 
 

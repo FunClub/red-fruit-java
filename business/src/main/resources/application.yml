@@ -14,8 +14,9 @@ spring:
 mybatis-plus:
   mapper-locations: mapper/*Mapper.xml # mapper映射文件路径
   configuration:
-    map-underscore-to-camel-case: true # 开启java属性驼峰命名到数据库下划线命名间的自动映射
-
+    map-underscore-to-camel-case: true #开启java属性驼峰命名到数据库下划线命名间的自动映射
+  global-config:
+    id-type: 3
 #第三方api配置
 api:
   wechat:

@@ -11,17 +11,17 @@ import java.io.Serializable;
 @Data
 public class Half{
 
-    private Long id;
+    private String id;
 
     /**
      * 用户id
      */
-    private Long userId;
+    private String userId;
 
     /**
      * 另一半id
      */
-    private Long halfUserId;
+    private String halfUserId;
 
     /**
      * 墙纸

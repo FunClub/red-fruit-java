@@ -64,8 +64,8 @@ public class RegisterController {
      * @param user 用户
      * @return 验证结果
      */
-    @GetMapping("isUserExits")
-    public Object isUserExits(User user){
+    @PostMapping("isUserExits")
+    public Object isUserExits(@RequestBody User user){
         return service.isUserExits(user);
     }
     /**

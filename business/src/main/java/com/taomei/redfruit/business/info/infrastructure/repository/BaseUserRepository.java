@@ -22,9 +22,9 @@ public class BaseUserRepository extends ServiceImpl<UserMapper,User> implements 
      * @return 用户
      */
     @Override
-    public User selectByHalfUser(Long userId, Half half) {
+    public User selectByHalfUser(String userId, Half half) {
 
-        Long halfUserId = half.getHalfUserId();
+        String halfUserId = half.getHalfUserId();
         User user = null;
         if(halfUserId.equals(userId)){
             user = selectById(half.getUserId());
@@ -41,7 +41,7 @@ public class BaseUserRepository extends ServiceImpl<UserMapper,User> implements 
      * @return 用户
      */
     @Override
-    public User selectByIdExcludePass(Long userId) {
+    public User selectByIdExcludePass(String userId) {
         User user = selectById(userId);
         user.setPassword(null);
         return user;

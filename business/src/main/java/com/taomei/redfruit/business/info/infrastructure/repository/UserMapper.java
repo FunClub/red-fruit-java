@@ -13,12 +13,12 @@ public interface UserMapper extends BaseMapper<User>{
      * @param mobile 手机号
      * @return 用户id
      */
-    Long selectIdByMobile(@Param("mobile") String mobile);
+    String selectIdByMobile(@Param("mobile") String mobile);
 
     /**
      * 通过昵称查询用户Id
      * @param nickname 昵称
      * @return 用户id
      */
-    Long selectIdByNickname(@Param("nickname") String nickname);
+    String selectIdByNickname(@Param("nickname") String nickname);
 }

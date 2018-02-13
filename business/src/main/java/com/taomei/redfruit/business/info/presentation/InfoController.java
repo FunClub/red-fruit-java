@@ -23,7 +23,7 @@ public class InfoController {
      */
     @GetMapping("/nickname")
     @SetUserId
-    public Object nicknameCanUpdate(Long userId,User user){
+    public Object nicknameCanUpdate(String userId,User user){
         user.setId(userId);
         return infoService.nicknameCanUpdate(user);
     }
@@ -35,7 +35,7 @@ public class InfoController {
      */
     @PutMapping("")
     @SetUserId
-    public Object updateUserAllInfo(Long userId,@RequestBody User user){
+    public Object updateUserAllInfo(String userId,@RequestBody User user){
         user.setId(userId);
         return infoService.updateUserInfo(user);
     }
@@ -45,7 +45,7 @@ public class InfoController {
      * @return 用户的全部信息
      */
     @GetMapping("{userId}")
-    public Object getUserAllInfo(@PathVariable("userId") Long userId){
+    public Object getUserAllInfo(@PathVariable("userId") String userId){
         return infoService.selectAllUserInfo(userId);
     }
 }

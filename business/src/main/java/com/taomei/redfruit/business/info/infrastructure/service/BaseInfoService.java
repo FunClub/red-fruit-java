@@ -57,7 +57,7 @@ public class BaseInfoService implements InfoService{
      * @return 用户的全部信息
      */
     @Override
-    public AllUserInfo selectAllUserInfo(Long userId) {
+    public AllUserInfo selectAllUserInfo(String userId) {
         User user = userRepository.selectByIdExcludePass(userId);
         Half half = halfRepository.selectByUserId(userId);
         User halfUser=null;
@@ -74,7 +74,7 @@ public class BaseInfoService implements InfoService{
      * @return 个人空间信息
      */
     @Override
-    public CenterInfo selectCenterInfo(Long userId) {
+    public CenterInfo selectCenterInfo(String userId) {
 
         //获取用户信息
         User user = userRepository.selectById(userId);

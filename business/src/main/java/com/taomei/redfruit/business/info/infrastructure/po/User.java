@@ -1,6 +1,8 @@
 package com.taomei.redfruit.business.info.infrastructure.po;
 
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.KeySequence;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -12,8 +14,7 @@ import java.time.LocalDate;
  */
 @Data
 public class User extends Model<User>{
-
-    private Long id;
+    private String id;
 
     /**
      * 手机号

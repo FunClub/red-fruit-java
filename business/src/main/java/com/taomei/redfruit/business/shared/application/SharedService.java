@@ -14,5 +14,5 @@ public interface SharedService {
      * @param userId 用户Id
      * @return 标题信息
      */
-    TitleUserInfo selectTitleUserInfo(Long userId);
+    TitleUserInfo selectTitleUserInfo(String userId);
 }
