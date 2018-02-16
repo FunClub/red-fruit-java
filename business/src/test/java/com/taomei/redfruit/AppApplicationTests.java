@@ -1,5 +1,7 @@
 package com.taomei.redfruit;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.taomei.redfruit.api.start.StartService;
 import com.taomei.redfruit.business.info.application.RegisterService;
 import com.taomei.redfruit.business.info.application.repository.UserRepository;
@@ -30,7 +32,11 @@ public class AppApplicationTests {
     @Test
     public void getStart() throws Exception {
         User user = new User();
-        user.setMobile("13996652857");
+        user.setEducation("2");
+        Page<User> page = new Page<>(2,4);
+
+        Page<User> users = userRepository.selectPage(page,new EntityWrapper<>(user));
+        System.out.println(users);
 
     }
 

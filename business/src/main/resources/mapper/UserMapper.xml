@@ -11,4 +11,5 @@
     <select id="selectIdByNickname" resultType="java.lang.String">
         SELECT user_id FROM `base_info` WHERE nickname = #{nickname}
     </select>
+
 </mapper>

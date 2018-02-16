@@ -1,8 +1,11 @@
 package com.taomei.redfruit.business.info.application.constant;
 
+import lombok.Getter;
+
 /**
  * 习惯等级
  */
+@Getter
 public enum HabitLevel {
     NO("0"),
     FEW("1"),

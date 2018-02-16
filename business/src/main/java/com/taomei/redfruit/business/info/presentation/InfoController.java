@@ -21,9 +21,9 @@ public class InfoController {
      * @param user 用户
      * @return
      */
-    @GetMapping("/nickname")
+    @PutMapping("/nickname")
     @SetUserId
-    public Object nicknameCanUpdate(String userId,User user){
+    public Object nicknameCanUpdate(String userId,@RequestBody User user){
         user.setId(userId);
         return infoService.nicknameCanUpdate(user);
     }

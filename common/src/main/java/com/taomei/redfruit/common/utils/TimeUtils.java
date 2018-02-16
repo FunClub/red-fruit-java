@@ -27,6 +27,20 @@ public class TimeUtils {
     private final static String[] CHINESE_ZODIAC = new String[] { "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊",
             "猴", "鸡", "狗", "猪" };
 
+
+    /**
+     * 根据年龄计算出生日期字符串
+     * @param ages 年龄
+     * @return 出生日期字符串
+     */
+    public static String calculateDateByAge(String ages){
+        Integer age = Integer.valueOf(ages);
+        LocalDate now = LocalDate.now();
+        Integer year = now.getYear()-age-1;
+        LocalDate newDate = LocalDate.of(year,now.getMonthValue(),now.getDayOfMonth());
+        newDate=newDate.plusDays(1);
+        return newDate.getYear()+"-"+newDate.getMonthValue()+"-"+newDate.getDayOfMonth();
+    }
     /**
      * 通过生日计算星座
      *

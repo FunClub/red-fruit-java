@@ -1,5 +1,8 @@
 package com.taomei.redfruit.business.info.application.constant;
 
+import lombok.Getter;
+
+@Getter
 public enum Gender {
     /**
      * 女
