@@ -55,7 +55,7 @@ public class CenterController {
     @RequestMapping("{centerUserId}")
     @SetUserId
     public Object getCenterInfo(String userId,@PathVariable("centerUserId") String centerUserId){
-        CenterInfo centerInfo = infoService.selectCenterInfo(userId);
+        CenterInfo centerInfo = infoService.selectCenterInfo(centerUserId);
         centerInfo.setMine(userId.equals(centerUserId));
         return centerInfo;
     }
