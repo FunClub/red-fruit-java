@@ -18,6 +18,7 @@ public class Article {
     /**
      * 时间
      */
+    @JsonIgnore
     private String time;
 
     /**
@@ -28,6 +29,7 @@ public class Article {
     /**
      * 微信号
      */
+    @JsonIgnore
     private String weixinaccount;
 
     /**

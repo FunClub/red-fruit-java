@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.Temporal;
 import java.util.Date;
 import java.util.UUID;
 
@@ -110,26 +111,16 @@ public class TimeUtils {
         return date;
     }
 
+
     /**
-     * 生成文件名字所用时间
-     *
+     * 获取简单时间
      * @return
      */
-    public static String generateFileTime() {
-        LocalDateTime dateTime = LocalDateTime.now();
-
-        return dateTime.format(DateTimeFormatter.ofPattern(DATE_TIME_PATTERN)) + dateTime.hashCode();
+    public static String generateDateTimeString() {
+        LocalDateTime date = LocalDateTime.now();
+        return date.format(DateTimeFormatter.ofPattern("yyyy-M-d HH:mm:ss"));
     }
 
-    public static String generateTime(String format) {
-        Date date = new Date();
-        SimpleDateFormat formats = new SimpleDateFormat(format);
-        return formats.format(date);
-    }
-
-    public static String getSimpleTime() {
-        return generateTime("yyyy-M-d HH:mm:ss");
-    }
 
     /**
      * 获得现在多久的时间
@@ -144,7 +135,7 @@ public class TimeUtils {
             calculateTime = new SimpleDateFormat("yyyy-M-d HH:mm:ss")
                     .parse(time);
             nowTime = new SimpleDateFormat("yyyy-M-d HH:mm:ss")
-                    .parse(getSimpleTime());
+                    .parse(generateDateTimeString());
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -9,6 +9,12 @@ spring:
     url: jdbc:mysql://localhost:3306/red-fruit?serverTimezone=UTC&useSSL=true
   profiles:
     active: oss,api,log
+  http:
+    multipart:
+      max-file-size: 100MB
+server:
+  session:
+    timeout: -1
 
 #mybatis.xml配置
 mybatis-plus:

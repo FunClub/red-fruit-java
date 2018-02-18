@@ -32,4 +32,9 @@ public class Trend {
      * 评论数
      */
     private Integer discussionCount;
+
+    /**
+     * 是不是个人可见
+     */
+    private boolean isPrivate;
 }
