@@ -7,7 +7,7 @@ import lombok.Data;
  */
 @Data
 public class SearchedUserInfo{
-    private String id;
+    private String userId;
     /**
      * 昵称
      */

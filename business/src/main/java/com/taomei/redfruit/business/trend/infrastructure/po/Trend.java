@@ -2,16 +2,13 @@ package com.taomei.redfruit.business.trend.infrastructure.po;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * 基础动态类
  */
 @Data
 public class Trend {
-
-    /**
-     * 动态id
-     */
-    private String id;
 
     /**
      * 发表动态的用户id
@@ -37,4 +34,9 @@ public class Trend {
      * 是不是个人可见
      */
     private boolean isPrivate;
+
+    /**
+     * 点赞用户 id
+     */
+    private List<String> thumbUserIds;
 }

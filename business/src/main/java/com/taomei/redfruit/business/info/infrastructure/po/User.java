@@ -14,7 +14,8 @@ import java.time.LocalDate;
  */
 @Data
 public class User extends Model<User>{
-    private String id;
+    @TableId
+    private String userId;
 
     /**
      * 手机号
@@ -199,6 +200,6 @@ public class User extends Model<User>{
      */
     @Override
     protected Serializable pkVal() {
-        return this.id;
+        return this.userId;
     }
 }

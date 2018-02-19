@@ -24,7 +24,7 @@ public class InfoController {
     @PutMapping("/nickname")
     @SetUserId
     public Object nicknameCanUpdate(String userId,@RequestBody User user){
-        user.setId(userId);
+        user.setUserId(userId);
         return infoService.nicknameCanUpdate(user);
     }
     /**
@@ -36,7 +36,7 @@ public class InfoController {
     @PutMapping("")
     @SetUserId
     public Object updateUserAllInfo(String userId,@RequestBody User user){
-        user.setId(userId);
+        user.setUserId(userId);
         return infoService.updateUserInfo(user);
     }
     /**

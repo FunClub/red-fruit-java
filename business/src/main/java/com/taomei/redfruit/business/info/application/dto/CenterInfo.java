@@ -7,7 +7,10 @@ import lombok.Data;
  */
 @Data
 public class CenterInfo {
-
+    /**
+     * 用户 Id
+     */
+    private String userId;
     /**
      * 访问的个人空间是否是自己的
      */

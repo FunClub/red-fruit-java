@@ -13,6 +13,13 @@ import com.taomei.redfruit.business.shared.application.dto.PagedInfo;
 public interface InfoService {
 
     /**
+     * 查询用户另一半 id
+     * @param userId 用户 id
+     * @return 用户另一半 id
+     */
+    String getHalfUserId(String userId);
+
+    /**
      * 根据条件分页查询用户
      * @param pageComm 分页条件
      * @return 已分页的用户信息

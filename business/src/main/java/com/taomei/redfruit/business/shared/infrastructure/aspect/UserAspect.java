@@ -31,7 +31,7 @@ public class UserAspect {
         Object[] args=point.getArgs();
         User user = (User) session.getAttribute("user");
         if(user==null)throw new Exception("用户未登陆");
-        args[0]=user.getId();
+        args[0]=user.getUserId();
         Object data = point.proceed(args);
         return ResponseDataUtils.success(data);
     }

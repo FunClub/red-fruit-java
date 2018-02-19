@@ -34,6 +34,21 @@ public class BaseInfoService implements InfoService{
     private HalfRepository halfRepository;
 
     /**
+     * 查询用户另一半 id
+     *
+     * @param userId 用户 id
+     * @return 用户另一半 id
+     */
+    @Override
+    public String getHalfUserId(String userId) {
+        Half half = halfRepository.selectByUserId(userId);
+        if(half!=null){
+            return userId.equals(half.getUserId())?half.getHalfUserId():half.getUserId();
+        }
+        return null;
+    }
+
+    /**
      * 根据条件分页查询用户
      *
      * @param pageComm 分页条件
@@ -134,7 +149,7 @@ public class BaseInfoService implements InfoService{
         User user1 = new User();
         user1.setNickname(user.getNickname());
         EntityWrapper<User> wrapper = new EntityWrapper<>(user1);
-        wrapper.ne("id",user.getId());
+        wrapper.ne("id",user.getUserId());
         wrapper.eq("nickname",user.getNickname());
         return userRepository.selectOne(wrapper)==null;
     }
@@ -189,4 +204,5 @@ public class BaseInfoService implements InfoService{
         }
         return UserDtoAssembler.assembleCenterInfo(user,halfUser,half);
     }
+
 }

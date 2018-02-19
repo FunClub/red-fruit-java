@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.taomei.redfruit.business.trend.infrastructure.repository.MoodMapper">
+
+    <resultMap autoMapping="true" id="MoodInfoMap" type="com.taomei.redfruit.business.trend.application.dto.MoodInfo">
+        <association property="shortInfo" javaType="com.taomei.redfruit.business.shared.application.dto.UserShortInfo" autoMapping="true"/>
+        <collection property="imgs" javaType="list" column="mood_id" select="com.taomei.redfruit.business.shared.infrastructure.repository.ImgMapper.selectByOfId"/>
+    </resultMap>
+    <!--通过用户 id 查询心情-->
+    <select id="selectByUserIds" resultMap="MoodInfoMap">
+        SELECT * FROM mood,`user`
+        WHERE `user`.user_id=mood.user_id
+        AND mood.user_id IN
+        <foreach collection="list" item="userId" open="(" separator="," close=")">
+            #{userId}
+        </foreach>
+        ORDER BY mood.date DESC
+    </select>
+</mapper>

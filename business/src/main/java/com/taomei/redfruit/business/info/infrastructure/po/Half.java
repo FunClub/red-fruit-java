@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 public class Half{
 
-    private String id;
+    private String halfId;
 
     /**
      * 用户id

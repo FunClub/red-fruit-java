@@ -7,7 +7,7 @@ import lombok.Data;
  */
 @Data
 public class UserInfo extends UserCriterionInfo{
-    private String id;
+    private String userId;
 
     /**
      * 魅力值

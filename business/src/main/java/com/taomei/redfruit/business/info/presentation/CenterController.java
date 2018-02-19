@@ -32,7 +32,7 @@ public class CenterController {
             String originalImg,
             @RequestParam("type") String type) throws IOException {
         User user = new User();
-        user.setId(userId);
+        user.setUserId(userId);
         if(type.equals(OssService.PROFILE)){
             user.setProfile(ossService.upload(newImg,OssService.PROFILE));
             if(originalImg!=null){
