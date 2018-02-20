@@ -26,7 +26,7 @@ public class UserAspect {
      * @param point
      * @return
      */
-    @Around("@annotation(com.taomei.redfruit.business.shared.infrastructure.annotation.SetUserId)")
+    @Around("@annotation(com.taomei.redfruit.business.shared.infrastructure.aspect.annotation.SetUserId)")
     public Object setUserId(ProceedingJoinPoint point) throws Exception,Throwable {
         Object[] args=point.getArgs();
         User user = (User) session.getAttribute("user");

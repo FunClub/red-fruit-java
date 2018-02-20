@@ -2,7 +2,7 @@ package com.taomei.redfruit.business.info.presentation;
 
 import com.taomei.redfruit.api.oss.OssService;
 import com.taomei.redfruit.business.info.infrastructure.po.User;
-import com.taomei.redfruit.business.shared.infrastructure.annotation.SetUserId;
+import com.taomei.redfruit.business.shared.infrastructure.aspect.annotation.SetUserId;
 import com.taomei.redfruit.business.info.application.InfoService;
 import com.taomei.redfruit.business.info.application.dto.CenterInfo;
 import org.springframework.beans.factory.annotation.Autowired;

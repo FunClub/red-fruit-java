@@ -4,7 +4,7 @@ import com.taomei.redfruit.business.info.application.InfoService;
 import com.taomei.redfruit.business.info.application.dto.UserCriterionInfo;
 import com.taomei.redfruit.business.info.infrastructure.po.User;
 import com.taomei.redfruit.business.shared.application.dto.PageComm;
-import com.taomei.redfruit.business.shared.infrastructure.annotation.SetUserId;
+import com.taomei.redfruit.business.shared.infrastructure.aspect.annotation.SetUserId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -3,16 +3,12 @@ package com.taomei.redfruit.business.shared.presentation;
 import com.taomei.redfruit.api.area.AreaService;
 import com.taomei.redfruit.api.oss.OssService;
 import com.taomei.redfruit.business.shared.application.SharedService;
-import com.taomei.redfruit.business.shared.infrastructure.annotation.SetUserId;
-import com.taomei.redfruit.common.utils.ValidatesUtil;
+import com.taomei.redfruit.business.shared.application.dto.InsertParentDiscussionComm;
+import com.taomei.redfruit.business.shared.infrastructure.aspect.annotation.SetUserId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.websocket.server.PathParam;
 import java.io.IOException;
 import java.util.List;
 
@@ -40,6 +36,26 @@ public class SharedController {
     @Autowired
     private SharedService sharedService;
 
+    /**
+     * 添加父评论
+     * @param userId 用户 Id
+     * @param comm 命令
+     * @return 父级评论信息
+     */
+    @PostMapping("/parentDiscussion")
+    @SetUserId
+    public Object create(String userId, @RequestBody InsertParentDiscussionComm comm){
+        comm.getDiscussion().setUserId(userId);
+        comm.getTrendNotice().setNoticeUserId(userId);
+        return sharedService.createParentDiscussion(comm);
+    }
+
+    /**
+     * 删除文件
+     * @param filePaths 文件路径
+     * @return 删除结果
+     * @throws Exception
+     */
     @PatchMapping("file")
     public Object delete(@RequestBody List<String> filePaths) throws Exception {
         ossService.deleteInBatches(filePaths);

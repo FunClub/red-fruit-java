@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ResponseAspect {
 
-    @Around("bean(*Controller) && !@annotation(com.taomei.redfruit.business.shared.infrastructure.annotation.SetUserId)")
+    @Around("bean(*Controller) && !@annotation(com.taomei.redfruit.business.shared.infrastructure.aspect.annotation.SetUserId)")
     public Object handle(ProceedingJoinPoint pjp) throws Throwable {
         Object data=pjp.proceed();
         return ResponseDataUtils.success(data);

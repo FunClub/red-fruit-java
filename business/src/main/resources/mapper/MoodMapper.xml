@@ -3,6 +3,7 @@
 <mapper namespace="com.taomei.redfruit.business.trend.infrastructure.repository.MoodMapper">
 
     <resultMap autoMapping="true" id="MoodInfoMap" type="com.taomei.redfruit.business.trend.application.dto.MoodInfo">
+        <result property="moodId" column="mood_id"/>
         <association property="shortInfo" javaType="com.taomei.redfruit.business.shared.application.dto.UserShortInfo" autoMapping="true"/>
         <collection property="imgs" javaType="list" column="mood_id" select="com.taomei.redfruit.business.shared.infrastructure.repository.ImgMapper.selectByOfId"/>
     </resultMap>
