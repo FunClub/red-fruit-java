@@ -12,11 +12,8 @@ public class DiscussionNoticeFlag {
     /**
      * 父级评论 Id
      */
+    @TableId
     private String parentDiscussionId;
-    /**
-     * 动态通知 Id
-     */
-    private String trendNoticeId;
 
     /**
      * 通知拥有者Id

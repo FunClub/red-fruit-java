@@ -8,8 +8,23 @@ import lombok.Data;
  */
 @Data
 public class SubDiscussion {
+
+    /**
+     * 子评论 Id
+     */
     @TableId
     private String subDiscussionId;
+
+    /**
+     * 父级评论 id
+     */
+    private String parentDiscussionId;
+    /**
+     * 被回复的用户 id,为空则评论的父级评论，而不是某个子级评论
+     */
+    private String discussedUserId;
+
+
     /**
      * 发表子评论的用户
      */
@@ -25,8 +40,5 @@ public class SubDiscussion {
      */
     private String date;
 
-    /**
-     * 被评论的用户 id,为空则评论的父级评论，而不是某个子级评论
-     */
-    private String discussedUserId;
+
 }

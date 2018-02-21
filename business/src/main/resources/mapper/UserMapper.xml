@@ -2,14 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.taomei.redfruit.business.info.infrastructure.repository.UserMapper">
 
-    <!--通过手机号查询用户id-->
-    <select id="selectIdByMobile" resultType="java.lang.String">
-      SELECT id FROM `user` WHERE mobile = #{mobile}
-    </select>
 
-    <!--通过昵称查询用户id-->
-    <select id="selectIdByNickname" resultType="java.lang.String">
-        SELECT user_id FROM `base_info` WHERE nickname = #{nickname}
+    <select id="selectUserShortInfo" resultType="com.taomei.redfruit.business.shared.application.dto.UserShortInfo">
+      SELECT user_id,birthday,nickname,profile,height,parent_area FROM `user` WHERE user_id = #{value}
     </select>
 
 </mapper>

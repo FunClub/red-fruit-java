@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.taomei.redfruit.business.shared.infrastructure.repository.ParentDiscussionMapper">
+    <resultMap id="ParentDiscussionMap" autoMapping="true" type="com.taomei.redfruit.business.shared.application.dto.discussion.ParentDiscussionInfo">
+        <result property="parentDiscussionId" column="parent_discussion_id"/>
+        <collection property="subDiscussionInfos" column="parent_discussion_id" select="com.taomei.redfruit.business.shared.infrastructure.repository.SubDiscussionMapper.selectByParentDiscussionId"
+        />
+    </resultMap>
+
+    <select id="selectByPage" resultMap="ParentDiscussionMap">
+         SELECT * FROM parent_discussion WHERE trend_id = #{comm.trendId} ORDER BY ${comm.sortBy} desc
+    </select>
 </mapper>

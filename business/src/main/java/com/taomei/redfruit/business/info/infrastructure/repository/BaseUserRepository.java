@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.taomei.redfruit.business.info.infrastructure.po.Half;
 import com.taomei.redfruit.business.info.infrastructure.po.User;
 import com.taomei.redfruit.business.info.application.repository.UserRepository;
+import com.taomei.redfruit.business.shared.application.dto.UserShortInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,19 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class BaseUserRepository extends ServiceImpl<UserMapper,User> implements UserRepository{
+
+    @Autowired
+    private UserMapper userMapper;
+    /**
+     * 查询用户简短信息
+     *
+     * @param userId 用户 id
+     * @return 用户简短信息
+     */
+    @Override
+    public UserShortInfo selectUserShortInfo(String userId) {
+        return userMapper.selectUserShortInfo(userId);
+    }
 
     /**
      * 通过另一半信息查询用户的另一半

@@ -56,6 +56,10 @@ public class TrendNotice {
     private String trendContent;
 
     /**
+     * 通知的内容
+     */
+    private String trendNoticeContent;
+    /**
      * 动态的图片
      */
     private String  trendImg;

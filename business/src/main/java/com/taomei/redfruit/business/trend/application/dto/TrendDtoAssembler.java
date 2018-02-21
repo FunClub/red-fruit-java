@@ -2,6 +2,7 @@ package com.taomei.redfruit.business.trend.application.dto;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.taomei.redfruit.business.shared.application.dto.PagedInfo;
+import com.taomei.redfruit.business.shared.application.dto.discussion.SubDiscussionInfo;
 import com.taomei.redfruit.common.utils.TimeUtils;
 
 import java.util.List;
@@ -33,10 +34,8 @@ public class TrendDtoAssembler {
 
             //简短时间
             moodInfo.setShortDate(TimeUtils.generateShortDate(moodInfo.getDate()));
-
             //多就之前发布的
             moodInfo.setHowLongAgo(TimeUtils.calculateHowLongAgo(moodInfo.getDate()));
-
         }
         pagedInfo.setData(moodInfos);
         pagedInfo.setHasNext(page.hasNext());

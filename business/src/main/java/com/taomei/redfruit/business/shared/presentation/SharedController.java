@@ -3,7 +3,11 @@ package com.taomei.redfruit.business.shared.presentation;
 import com.taomei.redfruit.api.area.AreaService;
 import com.taomei.redfruit.api.oss.OssService;
 import com.taomei.redfruit.business.shared.application.SharedService;
-import com.taomei.redfruit.business.shared.application.dto.InsertParentDiscussionComm;
+import com.taomei.redfruit.business.shared.application.dto.PageComm;
+import com.taomei.redfruit.business.shared.application.dto.discussion.InsertParentDiscussionComm;
+import com.taomei.redfruit.business.shared.application.dto.discussion.InsertSubDiscussionComm;
+import com.taomei.redfruit.business.shared.application.dto.discussion.ParentDiscussionInfo;
+import com.taomei.redfruit.business.shared.application.dto.discussion.QueryDiscussionComm;
 import com.taomei.redfruit.business.shared.infrastructure.aspect.annotation.SetUserId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,16 +41,41 @@ public class SharedController {
     private SharedService sharedService;
 
     /**
+     * 插入子级评论
+     * @param userId 用户 id
+     * @param comm 子级评论命令
+     * @return 子级评论信息
+     */
+    @PostMapping("subDiscussion")
+    @SetUserId
+    public Object createSubDiscussion(String userId, @RequestBody InsertSubDiscussionComm comm){
+        comm.getSubDiscussion().setUserId(userId);
+        comm.getTrendNotice().setMakeNoticeUserId(userId);
+        return sharedService.insertSubDiscussion(comm);
+    }
+
+    /**
+     * 查询父级评论
+     * @param comm 查询评论
+     * @return 分页的父级评论
+     */
+    @PatchMapping("parentDiscussion")
+    @SetUserId
+    public Object selectParentDiscussion(String userId, @RequestBody PageComm<ParentDiscussionInfo,QueryDiscussionComm> comm){
+        comm.getCondition().setUserId(userId);
+        return sharedService.selectParentDiscussionInfo(comm);
+    }
+    /**
      * 添加父评论
      * @param userId 用户 Id
      * @param comm 命令
      * @return 父级评论信息
      */
-    @PostMapping("/parentDiscussion")
+    @PostMapping("parentDiscussion")
     @SetUserId
     public Object create(String userId, @RequestBody InsertParentDiscussionComm comm){
-        comm.getDiscussion().setUserId(userId);
-        comm.getTrendNotice().setNoticeUserId(userId);
+        comm.getParentDiscussion().setUserId(userId);
+        comm.getTrendNotice().setMakeNoticeUserId(userId);
         return sharedService.createParentDiscussion(comm);
     }
 

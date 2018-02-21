@@ -1,15 +1,32 @@
 package com.taomei.redfruit.business.shared.application;
 
-import com.taomei.redfruit.business.shared.application.dto.InsertParentDiscussionComm;
+import com.taomei.redfruit.business.shared.application.dto.PageComm;
+import com.taomei.redfruit.business.shared.application.dto.PagedInfo;
+import com.taomei.redfruit.business.shared.application.dto.discussion.*;
 import com.taomei.redfruit.business.shared.application.dto.TitleUserInfo;
-import com.taomei.redfruit.business.shared.application.dto.discussion.ParentDiscussionInfo;
+import com.taomei.redfruit.business.shared.infrastructure.po.ParentDiscussion;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 共享服务接口
  */
 @Service
 public interface SharedService {
+
+    /**
+     * 插入子级评论
+     * @param comm 子级评论命令
+     * @return 子级评论信息
+     */
+    SubDiscussionInfo insertSubDiscussion(InsertSubDiscussionComm comm);
+    /**
+     * 查询父级评论
+     * @param comm 查询评论
+     * @return 分页的父级评论
+     */
+    PagedInfo selectParentDiscussionInfo(PageComm<ParentDiscussionInfo,QueryDiscussionComm> comm);
 
     /**
      * 插入父级评论

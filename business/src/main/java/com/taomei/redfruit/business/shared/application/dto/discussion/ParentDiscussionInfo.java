@@ -1,5 +1,6 @@
 package com.taomei.redfruit.business.shared.application.dto.discussion;
 
+import com.taomei.redfruit.business.shared.application.dto.UserShortInfo;
 import com.taomei.redfruit.business.shared.infrastructure.po.SubDiscussion;
 import lombok.Data;
 
@@ -17,32 +18,34 @@ public class ParentDiscussionInfo {
     private String parentDiscussionId;
 
     /**
+     * 用户 Id
+     */
+    private String userId;
+    /**
      * 点赞数量
      */
-    private Integer thumbsUpCount;
+    private int thumbsUpCount;
 
     /**
      * 能否点赞
      */
     private boolean thumbsUpAble;
 
-    /**
-     *  评论人 id
-     */
-    private String userId;
+
 
     /**
-     * 昵称
+     * 用户简短信息
      */
-    private String nickname;
-
-
-    private String profileImg;
-
+    private UserShortInfo userShortInfo;
     /**
      * 评论内容
      */
     private String content;
+
+    /**
+     * 时间
+     */
+    private String date;
 
     /**
      * 分门别类时间
@@ -57,5 +60,10 @@ public class ParentDiscussionInfo {
     /**
      * 子评论列表
      */
-    List<SubDiscussion> subDiscussions;
+    List<SubDiscussionInfo> subDiscussionInfos;
+
+    /**
+     * 点赞用户 id列表
+     */
+    List<String> thumbsUserId;
 }

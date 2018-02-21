@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 public class SubDiscussionInfo {
 
+    private String parentDiscussionId;
     /**
      *  评论人 id
      */
@@ -18,8 +19,15 @@ public class SubDiscussionInfo {
      */
     private String nickname;
 
+    /**
+     * 被回复的用户昵称
+     */
+    private String discussedNickname;
 
-    private String profileImg;
+    /**
+     * 被回复的用户 id,为空则评论的父级评论，而不是某个子级评论
+     */
+    private String discussedUserId;
 
     /**
      * 评论内容
@@ -35,4 +43,9 @@ public class SubDiscussionInfo {
      * 简短时间
      */
     private String shortDate;
+
+    /**
+     * 时间
+     */
+    private String date;
 }

@@ -35,5 +35,5 @@ public class ParentDiscussion {
     /**
      * 子评论数量
      */
-    private Integer subDiscussionCount;
+    private int subDiscussionCount;
 }

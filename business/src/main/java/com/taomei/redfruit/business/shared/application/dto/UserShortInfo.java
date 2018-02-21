@@ -22,4 +22,21 @@ public class UserShortInfo {
      * 头像
      */
     private String profile;
+
+    /**
+     * 生日
+     */
+    private String birthday;
+
+    /**
+     * 年龄
+     */
+    private Integer age;
+
+    /**
+     * 父级区域
+     */
+    private String parentArea;
+
+    private String height;
 }
