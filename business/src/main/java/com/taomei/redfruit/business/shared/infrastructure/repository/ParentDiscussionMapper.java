@@ -12,6 +12,22 @@ import java.util.List;
 
 @Mapper
 public interface ParentDiscussionMapper extends BaseMapper<ParentDiscussion>{
+
+    /**
+     * 查询父级评论
+     *
+     * @param id   父级评论id
+     * @return 父级评论信息
+     */
+    ParentDiscussionInfo selectById(String id);
+
+    /**
+     * 查询评论数量通过 动态 Id
+     * @param trendId 动态 Id
+     * @return 评论数量
+     */
+    Integer selectCountByTrendId(String trendId);
+
     /**
      * 分页查询父级评论
      *

@@ -15,9 +15,11 @@ import com.taomei.redfruit.business.shared.application.dto.TitleUserInfo;
 import com.taomei.redfruit.business.shared.application.repository.DiscussionNoticeFlagRepository;
 import com.taomei.redfruit.business.shared.application.repository.ParentDiscussionRepository;
 import com.taomei.redfruit.business.shared.application.repository.SubDiscussionRepository;
+import com.taomei.redfruit.business.shared.application.repository.ThumbRepository;
 import com.taomei.redfruit.business.shared.infrastructure.po.DiscussionNoticeFlag;
 import com.taomei.redfruit.business.shared.infrastructure.po.ParentDiscussion;
 import com.taomei.redfruit.business.shared.infrastructure.po.SubDiscussion;
+import com.taomei.redfruit.business.shared.infrastructure.po.Thumb;
 import com.taomei.redfruit.business.trend.application.dto.QueryMoodComm;
 import com.taomei.redfruit.common.utils.TimeUtils;
 import org.springframework.beans.BeanUtils;
@@ -27,6 +29,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * 共享服务实现
+ */
 @Service
 public class BaseSharedService implements SharedService{
     @Autowired
@@ -43,6 +48,53 @@ public class BaseSharedService implements SharedService{
 
     @Autowired
     private SubDiscussionRepository subDiscussionRepository;
+
+    @Autowired
+    private ThumbRepository thumbRepository;
+    /**
+     * 取消赞
+     *
+     * @param targetId 点赞目标 id
+     * @param userId   点赞的用户 Id
+     * @return 取消结果
+     */
+    @Override
+    @Transactional
+    public boolean deleteThumb(String targetId, String userId) {
+        //删除点赞
+        Thumb thumb = new Thumb();
+        thumb.setTargetId(targetId);
+        thumb.setUserId(userId);
+        thumbRepository.delete(new EntityWrapper<>(thumb));
+
+        //删除动态通知
+        trendNoticeRepository.delete(new EntityWrapper<TrendNotice>()
+                .eq("trend_id",targetId).
+        eq("make_notice_user_id",userId).eq("trend_notice_type","赞")
+        );
+        return true;
+    }
+
+    /**
+     * 点赞
+     *
+     * @return 点赞结果
+     */
+    @Override
+    @Transactional
+    public boolean createThumb(TrendNotice notice) {
+
+        //插入点赞
+        Thumb thumb = new Thumb();
+        thumb.setTargetId(notice.getTrendId());
+        thumb.setUserId(notice.getMakeNoticeUserId());
+        thumbRepository.insert(thumb);
+
+        //插入动态通知
+        notice.setDate(TimeUtils.generateDateTimeString());
+        noticeService.create(notice);
+        return true;
+    }
 
     /**
      * 插入子级评论
@@ -81,7 +133,8 @@ public class BaseSharedService implements SharedService{
         //更新父级评论中子评论数量
         ParentDiscussion parentDiscussion = parentDiscussionRepository.selectById(parentDiscussionId);
         parentDiscussion.setSubDiscussionCount(parentDiscussion.getSubDiscussionCount()+1);
-        return DiscussionDtoAssembler.AssembleSubDiscussionInfoForCreate(subDiscussion,userRepository);
+        parentDiscussionRepository.updateById(parentDiscussion);
+        return DiscussionDtoAssembler.assembleSubDiscussionInfoForCreate(subDiscussion,userRepository);
     }
 
     /**
@@ -95,7 +148,7 @@ public class BaseSharedService implements SharedService{
         Page<ParentDiscussionInfo> page = comm.getPage();
         page= parentDiscussionRepository.selectByPage(page,queryDiscussionComm);
 
-        return DiscussionDtoAssembler.AssembleParentDiscussionPagedInfo(page,queryDiscussionComm,userRepository);
+        return DiscussionDtoAssembler.assembleParentDiscussionPagedInfo(page,queryDiscussionComm,userRepository);
     }
 
     /**
@@ -118,7 +171,7 @@ public class BaseSharedService implements SharedService{
         notice.setDiscussionId(discussion.getParentDiscussionId());
         noticeService.create(notice);
 
-        return DiscussionDtoAssembler.AssembleParentDiscussionInfoForCreate(discussion,userRepository);
+        return DiscussionDtoAssembler.assembleParentDiscussionInfoForCreate(discussion,userRepository);
     }
 
     /**

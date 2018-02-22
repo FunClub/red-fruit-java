@@ -4,6 +4,8 @@ import com.taomei.redfruit.business.shared.application.dto.UserShortInfo;
 import com.taomei.redfruit.business.trend.infrastructure.po.Mood;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * 心情 dto
  */
@@ -29,4 +31,16 @@ public class MoodInfo extends Mood{
      * 能否点赞
      */
     private boolean thumbAble;
+
+    /**
+     * 点赞的用户 Id 列表
+     */
+    private List<String> thumbUserIds;
+
+    /**
+     * 点赞数量
+     */
+    private Integer thumbsUpCount;
+
+    private Integer discussionCount;
 }

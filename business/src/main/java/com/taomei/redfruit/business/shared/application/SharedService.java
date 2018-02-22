@@ -1,5 +1,6 @@
 package com.taomei.redfruit.business.shared.application;
 
+import com.taomei.redfruit.business.message.infrastructure.po.TrendNotice;
 import com.taomei.redfruit.business.shared.application.dto.PageComm;
 import com.taomei.redfruit.business.shared.application.dto.PagedInfo;
 import com.taomei.redfruit.business.shared.application.dto.discussion.*;
@@ -15,6 +16,18 @@ import java.util.List;
 @Service
 public interface SharedService {
 
+    /**
+     *  取消赞
+     * @param targetId 点赞目标 id
+     * @param userId 点赞的用户 Id
+     * @return 取消结果
+     */
+    boolean deleteThumb(String targetId,String userId);
+    /**
+     * 点赞
+     * @return 点赞结果
+     */
+    boolean createThumb(TrendNotice notice);
     /**
      * 插入子级评论
      * @param comm 子级评论命令

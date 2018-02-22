@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.taomei.redfruit.business.message.infrastructure.respository.TrendNoticeMapper">
+    
+    <resultMap id="TrendNoticeMap" autoMapping="true" type="com.taomei.redfruit.business.message.application.dto.TrendNoticeInfo">
+        <association property="makeNoticeShortInfo" javaType="com.taomei.redfruit.business.shared.application.dto.UserShortInfo" column="make_notice_user_id" select="com.taomei.redfruit.business.info.infrastructure.repository.UserMapper.selectUserShortInfo" autoMapping="true"/>
+        <association property="parentDiscussionInfo" javaType="com.taomei.redfruit.business.shared.application.dto.discussion.ParentDiscussionInfo" column="discussion_id" select="com.taomei.redfruit.business.shared.infrastructure.repository.ParentDiscussionMapper.selectById"/>
+    </resultMap>
+    
+    <select id="selectTrendNotice" resultMap="TrendNoticeMap">
+    SELECT * FROM `user`,trend_notice 
+    WHERE `user`.user_id = trend_notice.notice_user_id
+        AND trend_notice.notice_user_id = #{userId}
+    </select>
+</mapper>

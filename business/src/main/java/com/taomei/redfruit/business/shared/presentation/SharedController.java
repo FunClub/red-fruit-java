@@ -2,6 +2,7 @@ package com.taomei.redfruit.business.shared.presentation;
 
 import com.taomei.redfruit.api.area.AreaService;
 import com.taomei.redfruit.api.oss.OssService;
+import com.taomei.redfruit.business.message.infrastructure.po.TrendNotice;
 import com.taomei.redfruit.business.shared.application.SharedService;
 import com.taomei.redfruit.business.shared.application.dto.PageComm;
 import com.taomei.redfruit.business.shared.application.dto.discussion.InsertParentDiscussionComm;
@@ -40,6 +41,28 @@ public class SharedController {
     @Autowired
     private SharedService sharedService;
 
+    /**
+     *  取消点赞
+     * @param targetId 点赞目标 id
+     * @param userId 点赞的用户 Id
+     * @return 取消结果
+     */
+    @DeleteMapping("thumb/{targetId}")
+    @SetUserId
+    public Object deleteThumb(String userId, @PathVariable("targetId") String targetId){
+        return sharedService.deleteThumb(targetId,userId);
+    }
+
+    /**
+     * 点赞
+     * @return 点赞结果
+     */
+    @PostMapping("thumb")
+    @SetUserId
+    public Object createThumb(String userId, @RequestBody TrendNotice notice){
+        notice.setMakeNoticeUserId(userId);
+        return sharedService.createThumb(notice);
+    }
     /**
      * 插入子级评论
      * @param userId 用户 id

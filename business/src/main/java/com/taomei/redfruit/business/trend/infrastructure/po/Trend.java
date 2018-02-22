@@ -20,15 +20,6 @@ public class Trend {
      */
     private String date;
 
-    /**
-     * 点赞数
-     */
-    private Integer thumbCount;
-
-    /**
-     * 评论数
-     */
-    private Integer discussionCount;
 
     /**
      * 是不是个人可见

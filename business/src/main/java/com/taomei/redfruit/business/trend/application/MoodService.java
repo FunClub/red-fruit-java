@@ -21,9 +21,9 @@ public interface MoodService extends TrendService{
     /**
      * 创建心情
      * @param mood  心情
-     * @return 创建结果
+     * @return 心情心情
      */
-    boolean create(Mood mood);
+    MoodInfo create(Mood mood);
 
 
 }

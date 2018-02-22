@@ -10,4 +10,15 @@
     <select id="selectByPage" resultMap="ParentDiscussionMap">
          SELECT * FROM parent_discussion WHERE trend_id = #{comm.trendId} ORDER BY ${comm.sortBy} desc
     </select>
+
+
+
+    <select id="selectCountByTrendId" resultType="java.lang.Integer">
+        SELECT count(*) FROM parent_discussion WHERE trend_id=#{value}
+    </select>
+    <select id="selectById" resultMap="ParentDiscussionMap">
+        SELECT * FROM parent_discussion WHERE parent_discussion_id = #{value}
+    </select>
+
+
 </mapper>

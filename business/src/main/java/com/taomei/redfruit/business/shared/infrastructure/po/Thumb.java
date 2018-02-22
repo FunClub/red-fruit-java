@@ -1,5 +1,6 @@
 package com.taomei.redfruit.business.shared.infrastructure.po;
 
+import com.baomidou.mybatisplus.annotations.TableId;
 import lombok.Data;
 
 /**
@@ -10,6 +11,7 @@ public class Thumb {
     /**
      * 点赞 Id
      */
+    @TableId
     private String thumbId;
 
     /**

@@ -2,10 +2,12 @@ package com.taomei.redfruit.business.trend.infrastructure.service;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.taomei.redfruit.business.info.application.InfoService;
+import com.taomei.redfruit.business.info.application.repository.UserRepository;
 import com.taomei.redfruit.business.shared.application.dto.PageComm;
 import com.taomei.redfruit.business.shared.application.dto.PagedInfo;
 import com.taomei.redfruit.business.shared.application.dto.QueryOtherComm;
 import com.taomei.redfruit.business.shared.application.repository.ImgRepository;
+import com.taomei.redfruit.business.shared.application.repository.ParentDiscussionRepository;
 import com.taomei.redfruit.business.shared.infrastructure.repository.BaseImgRepository;
 import com.taomei.redfruit.business.shared.infrastructure.repository.ImgMapper;
 import com.taomei.redfruit.business.trend.application.MoodService;
@@ -38,6 +40,11 @@ public class BaseMoodService implements MoodService{
     @Autowired
     private ImgRepository imgRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private ParentDiscussionRepository parentDiscussionRepository;
     /**
      * 通过个人中心查询心情
      *
@@ -56,18 +63,19 @@ public class BaseMoodService implements MoodService{
         }
         userIds.add(otherComm.getOfUserId());
         moodPage = moodRepository.selectByUserIds(moodPage,userIds);
-        return TrendDtoAssembler.assembleMoodInfo(moodPage,otherComm.getViewUserId());
+
+        return TrendDtoAssembler.assembleMoodInfo(moodPage,otherComm.getViewUserId(),parentDiscussionRepository);
     }
 
     /**
      * 创建心情
      *
      * @param mood  心情
-     * @return 创建结果
+     * @return 心情心情
      */
     @Override
     @Transactional
-    public boolean create(Mood mood) {
+    public MoodInfo create(Mood mood) {
         mood.setDate(TimeUtils.generateDateTimeString());
 
         //插入心情
@@ -82,7 +90,7 @@ public class BaseMoodService implements MoodService{
             }
             imgRepository.insertBatch(imgsObj);
         }
-        return true;
+        return TrendDtoAssembler.assembleMoodInfoForCreate(mood,userRepository);
     }
 
 
