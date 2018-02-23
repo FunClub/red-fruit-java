@@ -37,9 +37,8 @@ public class NoticeEndPoint {
     @OnOpen
     public void open(Session session, @PathParam("userId")String userId) throws IOException {
         this.noticeSessionMap.put(userId,session);
-        if (LOGGER.isDebugEnabled()){
-            LOGGER.info(session.getId()+"connected");
-        }
+
+        System.out.println(session.getId()+"connected");
     }
     @OnMessage
     public void message(Session session, NoticeMessage noticeMessage) {

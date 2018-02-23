@@ -12,10 +12,10 @@ spring:
   http:
     multipart:
       max-file-size: 100MB
+      max-request-size: 100MB
 server:
   session:
     timeout: -1
-
 #mybatis.xml配置
 mybatis-plus:
   mapper-locations: mapper/*Mapper.xml # mapper映射文件路径
@@ -60,4 +60,5 @@ api:
     path: /star
 logging:
   level: debug
+debug: true
 
