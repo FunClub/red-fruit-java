@@ -19,7 +19,7 @@ public interface ParentDiscussionMapper extends BaseMapper<ParentDiscussion>{
      * @param id   父级评论id
      * @return 父级评论信息
      */
-    ParentDiscussionInfo selectById(String id);
+    ParentDiscussionInfo selectParentDiscussionInfoById(String id);
 
     /**
      * 查询评论数量通过 动态 Id

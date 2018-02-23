@@ -4,12 +4,13 @@
     
     <resultMap id="TrendNoticeMap" autoMapping="true" type="com.taomei.redfruit.business.message.application.dto.TrendNoticeInfo">
         <association property="makeNoticeShortInfo" javaType="com.taomei.redfruit.business.shared.application.dto.UserShortInfo" column="make_notice_user_id" select="com.taomei.redfruit.business.info.infrastructure.repository.UserMapper.selectUserShortInfo" autoMapping="true"/>
-        <association property="parentDiscussionInfo" javaType="com.taomei.redfruit.business.shared.application.dto.discussion.ParentDiscussionInfo" column="discussion_id" select="com.taomei.redfruit.business.shared.infrastructure.repository.ParentDiscussionMapper.selectById"/>
+        <association property="parentDiscussionInfo" javaType="com.taomei.redfruit.business.shared.application.dto.discussion.ParentDiscussionInfo" column="discussion_id" select="com.taomei.redfruit.business.shared.infrastructure.repository.ParentDiscussionMapper.selectParentDiscussionInfoById"/>
+        <association property="trendUserInfo" javaType="com.taomei.redfruit.business.shared.application.dto.UserShortInfo" column="trend_user_id" select="com.taomei.redfruit.business.info.infrastructure.repository.UserMapper.selectUserShortInfo" autoMapping="true"/>
     </resultMap>
     
     <select id="selectTrendNotice" resultMap="TrendNoticeMap">
     SELECT * FROM `user`,trend_notice 
     WHERE `user`.user_id = trend_notice.notice_user_id
-        AND trend_notice.notice_user_id = #{userId}
+        AND trend_notice.notice_user_id = #{userId} ORDER BY date desc
     </select>
 </mapper>

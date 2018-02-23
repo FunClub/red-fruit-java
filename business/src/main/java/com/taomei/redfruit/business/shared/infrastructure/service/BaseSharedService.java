@@ -116,7 +116,10 @@ public class BaseSharedService implements SharedService{
         String discussedUserId = subDiscussion.getDiscussedUserId();
 
         TrendNotice queryTrendNotice = trendNoticeRepository.selectOne(new EntityWrapper<TrendNotice>()
-                .eq("discussion_id",parentDiscussionId));
+                .eq("discussion_id",parentDiscussionId)
+                .eq("notice_user_id",notice.getNoticeUserId())
+                .eq("make_notice_user_id",notice.getMakeNoticeUserId())
+                );
         if(queryTrendNotice==null){
             //插入动态通知
             notice.setDate(TimeUtils.generateDateTimeString());
@@ -125,7 +128,7 @@ public class BaseSharedService implements SharedService{
             //更新动态通知
             queryTrendNotice.setDate(TimeUtils.generateDateTimeString());
             queryTrendNotice.setMakeNoticeUserId(subDiscussion.getUserId());
-            queryTrendNotice.setTrendContent(subDiscussion.getContent());
+            queryTrendNotice.setTrendNoticeContent(subDiscussion.getContent());
             queryTrendNotice.setState(false);
             trendNoticeRepository.updateById(queryTrendNotice);
         }

@@ -20,6 +20,10 @@ public class SubDiscussionInfo {
     private String nickname;
 
     /**
+     * 头像
+     */
+    private String profile;
+    /**
      * 被回复的用户昵称
      */
     private String discussedNickname;

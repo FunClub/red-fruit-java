@@ -31,6 +31,11 @@ public class TrendNotice {
     private String trendId;
 
     /**
+     * 动态用户 Id
+     */
+    private String trendUserId;
+
+    /**
      * 生成此动态通知的用户id
      */
     private String makeNoticeUserId;

@@ -28,6 +28,10 @@ public class TrendNoticeInfo extends TrendNotice{
     private UserShortInfo makeNoticeShortInfo;
 
     /**
+     * 动态用户信息
+     */
+    private UserShortInfo trendUserInfo;
+    /**
      * 父级评论信息
      */
     private ParentDiscussionInfo parentDiscussionInfo;

@@ -54,6 +54,7 @@ public class DiscussionDtoAssembler {
                 //查询评论人相关信息
                 userShortInfo = userRepository.selectUserShortInfo(subDiscussionInfo.getUserId());
                 subDiscussionInfo.setNickname(userShortInfo.getNickname());
+                subDiscussionInfo.setProfile(userShortInfo.getProfile());
                 //查询被评论人昵称
                 userShortInfo = userRepository.selectUserShortInfo(subDiscussionInfo.getDiscussedUserId());
                 if(userShortInfo!=null){
@@ -102,6 +103,7 @@ public class DiscussionDtoAssembler {
         //查询评论人相关信息
         UserShortInfo userShortInfo = userRepository.selectUserShortInfo(subDiscussionInfo.getUserId());
         subDiscussionInfo.setNickname(userShortInfo.getNickname());
+        subDiscussionInfo.setProfile(userShortInfo.getProfile());
         //查询被评论人昵称
         userShortInfo = userRepository.selectUserShortInfo(subDiscussionInfo.getDiscussedUserId());
         if(userShortInfo!=null){
