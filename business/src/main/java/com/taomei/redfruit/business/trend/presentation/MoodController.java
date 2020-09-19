@@ -3,7 +3,7 @@ package com.taomei.redfruit.business.trend.presentation;
 import com.taomei.redfruit.business.shared.application.dto.PageComm;
 import com.taomei.redfruit.business.shared.application.dto.QueryOtherComm;
 import com.taomei.redfruit.business.shared.infrastructure.aspect.annotation.SetUserId;
-import com.taomei.redfruit.business.trend.application.MoodService;
+import com.taomei.redfruit.business.trend.application.service.MoodService;
 import com.taomei.redfruit.business.trend.application.dto.MoodInfo;
 import com.taomei.redfruit.business.trend.infrastructure.po.Mood;
 import org.springframework.beans.factory.annotation.Autowired;

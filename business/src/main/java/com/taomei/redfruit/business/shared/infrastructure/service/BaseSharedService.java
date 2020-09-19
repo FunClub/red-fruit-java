@@ -2,6 +2,7 @@ package com.taomei.redfruit.business.shared.infrastructure.service;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.taomei.redfruit.api.oss.OssService;
 import com.taomei.redfruit.business.info.application.repository.UserRepository;
 import com.taomei.redfruit.business.info.infrastructure.po.User;
 import com.taomei.redfruit.business.message.application.TrendNoticeService;
@@ -21,12 +22,21 @@ import com.taomei.redfruit.business.shared.infrastructure.po.ParentDiscussion;
 import com.taomei.redfruit.business.shared.infrastructure.po.SubDiscussion;
 import com.taomei.redfruit.business.shared.infrastructure.po.Thumb;
 import com.taomei.redfruit.business.trend.application.dto.QueryMoodComm;
+import com.taomei.redfruit.business.trend.application.dto.UploadPhotoInfo;
 import com.taomei.redfruit.common.utils.TimeUtils;
+import org.bouncycastle.util.encoders.UrlBase64;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -51,6 +61,26 @@ public class BaseSharedService implements SharedService{
 
     @Autowired
     private ThumbRepository thumbRepository;
+
+    /**
+     * 生成base64URL
+     * @param code 等待加密的字符串
+     * @return
+     * @throws UnsupportedEncodingException
+     */
+    public String generateBase64Url(String code) throws UnsupportedEncodingException {
+        byte[] b= UrlBase64.encode(code.getBytes("UTF-8"));
+        String base64Url=new String(b,"UTF-8");
+        StringBuilder sb = new StringBuilder(base64Url);
+
+        /*去除点*/
+        int index=sb.indexOf(".");
+        if(index!=-1){
+            sb=sb.delete(index,base64Url.length());
+        }
+        return sb.toString();
+    }
+
     /**
      * 取消赞
      *

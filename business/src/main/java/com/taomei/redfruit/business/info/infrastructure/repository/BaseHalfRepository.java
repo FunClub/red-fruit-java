@@ -31,4 +31,19 @@ public class BaseHalfRepository extends ServiceImpl<HalfMapper,Half> implements 
         }
         return half;
     }
+
+    /**
+     * 通过用户id查询另一半信息
+     *
+     * @param userId 用户id
+     * @return 另一半用户 Id
+     */
+    @Override
+    public String selectHalfUserIdByUserId(String userId) {
+        Half half = selectByUserId(userId);
+        if(half!=null){
+            return selectByUserId(userId).getUserId();
+        }
+        return null ;
+    }
 }

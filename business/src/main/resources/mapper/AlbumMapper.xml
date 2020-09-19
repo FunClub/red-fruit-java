@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.taomei.redfruit.business.trend.infrastructure.repository.AlbumMapper">
+
+    <!--通过用户 id 查询用户相册-->
+    <select id="findByHalf" resultType="com.taomei.redfruit.business.trend.infrastructure.po.Album">
+      SELECT * FROM album
+      <where>
+          user_id =#{userId}
+          <if test="halfUserId!=null">
+              OR user_id =#{halfUserId}
+          </if>
+      </where>
+      ORDER BY date DESC
+    </select>
+
+</mapper>

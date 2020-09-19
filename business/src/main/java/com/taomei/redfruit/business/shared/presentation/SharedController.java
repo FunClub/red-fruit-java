@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -40,6 +41,17 @@ public class SharedController {
      */
     @Autowired
     private SharedService sharedService;
+
+    /**
+     * 生成base64URL
+     * @param code 等待加密的字符串
+     * @return base64URL
+     * @throws UnsupportedEncodingException
+     */
+    @PostMapping("base64Url")
+    public Object generateBase64Url(String code) throws UnsupportedEncodingException {
+        return sharedService.generateBase64Url(code);
+    }
 
     /**
      *  取消点赞

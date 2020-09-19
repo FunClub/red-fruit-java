@@ -1,4 +1,4 @@
-package com.taomei.redfruit.business.trend.application;
+package com.taomei.redfruit.business.trend.application.service;
 
 import com.taomei.redfruit.business.shared.application.dto.PageComm;
 import com.taomei.redfruit.business.shared.application.dto.PagedInfo;
@@ -9,7 +9,7 @@ import com.taomei.redfruit.business.trend.infrastructure.po.Mood;
 /**
  * 心情服务接口
  */
-public interface MoodService extends TrendService{
+public interface MoodService{
 
     /**
      * 通过个人中心查询心情

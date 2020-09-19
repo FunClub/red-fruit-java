@@ -8,11 +8,8 @@ import com.taomei.redfruit.business.shared.application.dto.PagedInfo;
 import com.taomei.redfruit.business.shared.application.dto.QueryOtherComm;
 import com.taomei.redfruit.business.shared.application.repository.ImgRepository;
 import com.taomei.redfruit.business.shared.application.repository.ParentDiscussionRepository;
-import com.taomei.redfruit.business.shared.infrastructure.repository.BaseImgRepository;
-import com.taomei.redfruit.business.shared.infrastructure.repository.ImgMapper;
-import com.taomei.redfruit.business.trend.application.MoodService;
+import com.taomei.redfruit.business.trend.application.service.MoodService;
 import com.taomei.redfruit.business.trend.application.dto.MoodInfo;
-import com.taomei.redfruit.business.trend.application.dto.QueryMoodComm;
 import com.taomei.redfruit.business.trend.application.dto.TrendDtoAssembler;
 import com.taomei.redfruit.business.trend.application.repository.MoodRepository;
 import com.taomei.redfruit.business.trend.infrastructure.po.Img;
@@ -40,11 +37,11 @@ public class BaseMoodService implements MoodService{
     @Autowired
     private ImgRepository imgRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+
+
 
     @Autowired
-    private ParentDiscussionRepository parentDiscussionRepository;
+    private TrendDtoAssembler trendDtoAssembler;
     /**
      * 通过个人中心查询心情
      *
@@ -64,7 +61,7 @@ public class BaseMoodService implements MoodService{
         userIds.add(otherComm.getOfUserId());
         moodPage = moodRepository.selectByUserIds(moodPage,userIds);
 
-        return TrendDtoAssembler.assembleMoodInfo(moodPage,otherComm.getViewUserId(),parentDiscussionRepository);
+        return trendDtoAssembler.assembleMoodInfo(moodPage,otherComm.getViewUserId());
     }
 
     /**
@@ -90,7 +87,7 @@ public class BaseMoodService implements MoodService{
             }
             imgRepository.insertBatch(imgsObj);
         }
-        return TrendDtoAssembler.assembleMoodInfoForCreate(mood,userRepository);
+        return trendDtoAssembler.assembleMoodInfoForCreate(mood);
     }
 
 

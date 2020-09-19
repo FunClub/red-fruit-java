@@ -9,15 +9,29 @@ import com.taomei.redfruit.business.shared.application.dto.discussion.SubDiscuss
 import com.taomei.redfruit.business.shared.application.repository.ParentDiscussionRepository;
 import com.taomei.redfruit.business.shared.infrastructure.po.ParentDiscussion;
 import com.taomei.redfruit.business.trend.infrastructure.po.Mood;
+import com.taomei.redfruit.business.trend.infrastructure.po.Photo;
 import com.taomei.redfruit.common.utils.TimeUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * 动态 dto 组装器
  */
+@Component
 public class TrendDtoAssembler {
+
+    @Autowired
+    public ParentDiscussionRepository parentDiscussionRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    public   PhotoInfo assemblePhotoInfo(Photo photo,String userId){
+        return null;
+    }
 
     /**
      * 组装心情信息
@@ -26,7 +40,7 @@ public class TrendDtoAssembler {
      * @param viewUserId 查看用户 Id
      * @return 心情信息
      */
-    public static PagedInfo assembleMoodInfo(Page<MoodInfo> page, String viewUserId,ParentDiscussionRepository parentDiscussionRepository) {
+    public  PagedInfo assembleMoodInfo(Page<MoodInfo> page, String viewUserId) {
         List<MoodInfo> moodInfos = page.getRecords();
         List<String> thumbUserIds = null;
         PagedInfo pagedInfo = new PagedInfo();
@@ -60,11 +74,10 @@ public class TrendDtoAssembler {
     /**
      * 创建心情时组装心情信息
      *
-     * @param mood       心情数据
-     * @param userRepository 用户仓储
+     * @param mood 心情数据
      * @return 心情信息
      */
-    public static MoodInfo assembleMoodInfoForCreate(Mood mood, UserRepository userRepository) {
+    public  MoodInfo assembleMoodInfoForCreate(Mood mood) {
         MoodInfo moodInfo = new MoodInfo();
         BeanUtils.copyProperties(mood, moodInfo);
         moodInfo.setThumbAble(true);

@@ -24,7 +24,7 @@ public class Trend {
     /**
      * 是不是个人可见
      */
-    private boolean isPrivate;
+    private boolean limit;
 
     /**
      * 点赞用户 id
