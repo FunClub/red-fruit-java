@@ -14,11 +14,4 @@ public interface HalfRepository extends IService<Half>{
      * @return 另一半信息
      */
     Half selectByUserId(String userId);
-
-    /**
-     * 通过用户id查询另一半信息
-     * @param userId 用户id
-     * @return 另一半用户 Id
-     */
-    String selectHalfUserIdByUserId(String userId);
 }

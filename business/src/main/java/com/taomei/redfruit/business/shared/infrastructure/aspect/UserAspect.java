@@ -10,18 +10,11 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpSession;
 
-
 @Aspect
 @Component
 public class UserAspect {
     private final HttpSession session;
 
-    /**
-     * @param
-     * @return
-     * @author 刘滔(2389599310@qq.com)
-     * @date 2020/9/19 12:45 下午
-     */
     @Autowired
     public UserAspect(HttpSession session) {
         this.session = session;

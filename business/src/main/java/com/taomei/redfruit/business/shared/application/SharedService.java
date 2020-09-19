@@ -8,7 +8,6 @@ import com.taomei.redfruit.business.shared.application.dto.TitleUserInfo;
 import com.taomei.redfruit.business.shared.infrastructure.po.ParentDiscussion;
 import org.springframework.stereotype.Service;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -16,14 +15,6 @@ import java.util.List;
  */
 @Service
 public interface SharedService {
-
-    /**
-     * 生成base64URL
-     * @param code 等待加密的字符串
-     * @return
-     * @throws UnsupportedEncodingException
-     */
-    String generateBase64Url(String code) throws UnsupportedEncodingException;
 
     /**
      *  取消赞

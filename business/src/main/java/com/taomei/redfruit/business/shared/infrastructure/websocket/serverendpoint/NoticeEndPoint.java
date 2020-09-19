@@ -24,7 +24,6 @@ import java.util.Map;
 )
 @Component
 public class NoticeEndPoint {
-
     private final  static Logger LOGGER = LoggerFactory.getLogger(NoticeEndPoint.class);
     /**
      * 保存会话
@@ -41,7 +40,6 @@ public class NoticeEndPoint {
 
         System.out.println(session.getId()+"connected");
     }
-
     @OnMessage
     public void message(Session session, NoticeMessage noticeMessage) {
         String recevieUserId = noticeMessage.getReceivedUserId();
@@ -56,7 +54,6 @@ public class NoticeEndPoint {
             }
         }
     }
-
     @OnClose
     public void close(Session session, CloseReason closeReason, @PathParam("userId")String userId){
         try {
@@ -67,7 +64,6 @@ public class NoticeEndPoint {
         }
         LOGGER.info(closeReason.getReasonPhrase()+","+session.getId()+"close socket");
     }
-
     @OnError
     public void error(Throwable throwable, Session session, @PathParam("userId")String userId){
         try {
